@@ -12,6 +12,12 @@
 		
 	 <h1 class="py-3 text-danger text-center">LA MIA PIZZERIA!!!</h1> 
 	
+	<form action="/" method="get" class="mt-5">
+  		<input type="text" id="keyword" name="keyword" />
+  		<button type="submit">Cerca</button>
+	</form>
+	
+	
       <div class="row" th:each="pizza : ${pizze}">
 		<div class="col-6">
 		   <h2 class="py-3"><a class="text-dark text-uppercase text-decoration-none" th:text="${pizza.name}" th:href="@{'pizza/'+ ${pizza.id}}"></a></h2> 
