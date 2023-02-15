@@ -14,10 +14,7 @@
 	
       <div class="row" th:each="pizza : ${pizze}">
 		<div class="col-6">
-		   <h2 class="py-3" th:text="${pizza.name}"></h2>
-		   <h3 th:text="${pizza.description}"></h3>
-		   <p th:text="${pizza.price}"></p>
-		   <img class="img-thumbnail" alt="pizza-logo" th:src="${pizza.imgPath}" />
+		   <h2 class="py-3"><a class="text-dark text-uppercase text-decoration-none" th:text="${pizza.name}" th:href="@{'pizza/'+ ${pizza.id}}"></a></h2> 
 	    </div>
 	  </div>
   </div>
