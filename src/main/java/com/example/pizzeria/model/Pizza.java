@@ -1,11 +1,12 @@
 package com.example.pizzeria.model;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -16,13 +17,19 @@ public class Pizza {
 	@GeneratedValue( strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull(message="name must be not null")
+	@NotEmpty(message="name must be not empty")
 	private String name;
 	
+	@NotNull(message="description must be not null")
+	@NotEmpty(message="description must be not empty")
 	private String description;
 	
+	@NotNull(message="imgPath must be not null")
+	@NotEmpty(message="imgPath must be not empty")
 	private String imgPath;
 	
-	@Nonnull
+	@NotNull(message="price must be not null")
 	private int price;
 	
 	
