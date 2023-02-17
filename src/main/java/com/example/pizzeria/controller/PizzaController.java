@@ -42,7 +42,7 @@ public class PizzaController {
 	 @Autowired
 	 PizzaRepository pizzarepository;
 	 
-	 
+	 // SEARCH PIZZA
 	 @GetMapping("/pizza/{id}")
 	 public String detail (@PathVariable("id") Integer id , Model model ) {
 		 
@@ -58,7 +58,7 @@ public class PizzaController {
 	 }
 	 
 	 
-	 
+	     // CREATE PIZZA
          @GetMapping("/create")
          public String create(Model model) {
         	 Pizza pizza = new Pizza();
@@ -80,6 +80,42 @@ public class PizzaController {
 			
 			return "redirect:/"; 
 			
+		}
+		
+		
+		// EDIT PIZZA
+		@GetMapping("/edit/{id}")		
+		public String edit(@PathVariable("id") Integer id, Model model) {		
+			Pizza pizza=pizzarepository.getReferenceById(id); 
+			
+			model.addAttribute("pizza", pizza);
+			return "/edit";
+		}
+		
+		@PostMapping("/edit/{id}")		
+		public String update(
+				@Valid @ModelAttribute Pizza formPizza,
+				BindingResult bindingResult,
+				Model model) {
+			
+			
+			 if (bindingResult.hasErrors())
+				return "edit";
+			
+			    pizzarepository.save(formPizza);
+			
+			    return "redirect:/";
+		} 
+		
+		
+		
+		// DELETE PIZZA
+		@PostMapping("/delete/{id}")
+		public String delete(@PathVariable("id") Integer id) {
+		 
+		   pizzarepository.deleteById(id);
+		   
+		   return "redirect:/";
 		}
 
 }

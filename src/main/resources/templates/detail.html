@@ -17,6 +17,16 @@
 	    <h3 th:text="${pizza.description}"></h3>
 	    <p th:text="${pizza.price}"></p>
         <img class="img-thumbnail" alt="pizza-logo" th:src="${pizza.imgPath}" />
+        
+        
+        <a class="btn btn-primary my-2" th:href="@{'/edit/{id}'(id=${pizza.id})}"><i class="fa-regular fa-pen-to-square"></i>Modifica pizza</a>
+	
+          <form action="#" th:action="@{'/delete/{id}'(id=${pizza.id})}" method="post">
+		   <button class="btn btn-danger" type="submit" id="submitButton">
+			 <i class="fas fa-trash-alt">Elimina</i>
+		   </button>
+		  </form>
+		  
        </div>
       </div>
     </div>
